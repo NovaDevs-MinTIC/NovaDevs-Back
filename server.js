@@ -1,6 +1,6 @@
 import Express from "express"; 
 
-const app = Express()
+const app = Express();
 
 app.use(Express.json());
 
@@ -14,10 +14,10 @@ app.get('/productos', (req, res)=> {
     res.send(productos);
 });
 
-app.post('/productos/nuevo', (req, res) =>{
-    console.log('Alguien hizo post en la ruta /productos/nuevo');
+app.post('/productos/nuevo', (req, res) => {
+    res.send('ok, producto creado');
 });
 
-app.listen(5000,()=>{
-    console.log('escuchando puerto 5000')
+app.listen(5000, ()=>{
+    console.log('escuchando puerto 5000');
 });
