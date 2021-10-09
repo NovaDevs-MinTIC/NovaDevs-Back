@@ -7,7 +7,7 @@ import {
     consultarProducto,
 } from '../../controllers/producto/controller.js';
   
-const rutasVehiculo = Express.Router();
+const rutasProducto = Express.Router();
 
 const genercCallback = (res) => (err, result) => {
   if (err) {
