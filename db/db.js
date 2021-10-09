@@ -18,7 +18,7 @@ const client = new MongoClient(stringConexion, {
         console.error('Error conectando a la base de datos');
         return 'error';
       }
-      baseDeDatos = db.db('concesionario');
+      baseDeDatos = db.db('NovaDevsShoes');
       console.log('baseDeDatos exitosa');
       return callback();
     });

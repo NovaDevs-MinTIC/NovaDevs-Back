@@ -5,7 +5,7 @@ import {
     eliminarProducto,
     editarProducto,
     consultarProducto,
-} from '../../controllers/producto/controller.js';
+} from '../../controller/producto/controller.js';
   
 const rutasProducto = Express.Router();
 
