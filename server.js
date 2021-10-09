@@ -1,31 +1,21 @@
-import Express from "express"; 
-import { MongoClient } from "mongodb";
+import Express from 'express';
+import Cors from 'cors';
+import dotenv from 'dotenv';
+import { conectarBD } from './db/db.js';
+import rutasProducto from './views/productos/rutas.js';
 
-const stringConexion = 'mongodb+srv://nberrio:Learningtocode*@proyectoprueba.jj9ov.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-
-const cliente = MongoClient(stringConexion, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+dotenv.config({ path: './.env' });
 
 const app = Express();
 
 app.use(Express.json());
+app.use(Cors());
+app.use(rutasProducto);
 
-app.get('/productos', (req, res)=> {
-    console.log('Alguien hizo get en la ruta /productos');
-    const productos = [
-        {idproducto : '1010', descripcion : 'Adidas Stan Smith', valorunitario : 250000, estado : 'No Disponible'},
-        {idproducto: '2020', descripcion : 'Adidas Ultra Bost', valorunitario : 265000, estado : 'Disponible'},
-        {idproducto: '3030', descripcion : 'Nike Stefan Janoski', valorunitario : 300000, estado : 'No Disponible'},
-    ];
-    res.send(productos);
-});
+const main = () => {
+  return app.listen(process.env.PORT, () => {
+    console.log(`escuchando puerto ${process.env.PORT}`);
+  });
+};
 
-app.post('/productos/nuevo', (req, res) => {
-    res.send('ok, producto creado');
-});
-
-app.listen(5000, ()=>{
-    console.log('escuchando puerto 5000');
-});
+conectarBD(main);
