@@ -5,7 +5,7 @@ import {
   editarVenta,
   eliminarVenta,
   consultarVenta,
-} from '../../controllers/ventas/controller.js';
+} from '../../controller/ventas/controller.js';
 
 const rutasVenta = Express.Router();
 
