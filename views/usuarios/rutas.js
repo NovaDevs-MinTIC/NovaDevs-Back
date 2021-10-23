@@ -2,9 +2,10 @@ import Express from 'express';
 import {
     queryUsuarios,
     crearUsuario,
-    eliminarUsuario,
     editarUsuario,
+    eliminarUsuario,
     consultarUsuario,
+    consultarOCrearUsuario,
 } from '../../controller/usuarios/controller.js';
   
 const rutasUsuario = Express.Router();
@@ -22,8 +23,16 @@ rutasUsuario.route('/usuarios').get((req, res) => {
   queryUsuarios(genercCallback(res));
 });
 
+
+
 rutasUsuario.route('/usuarios').post((req, res) => {
   crearUsuario(req.body, genercCallback(res));
+});
+
+rutasUsuario.route('/usuarios/self').get((req, res) => {
+  console.log('alguien hizo get en la ruta /self');
+  consultarOCrearUsuario(req, genercCallback(res));
+  // consultarUsuario(, genercCallback(res));
 });
 
 rutasUsuario.route('/usuarios/:id').get((req, res) => {
