@@ -50,7 +50,6 @@ const queryUsuarios = async (callback) => {
         user.auth0ID = user._id;
         delete user._id;
         user.rol = 'sin rol';
-        user.estado = 'pendiente';
         await crearUsuario(user, (err, respuesta) => callback(err, user));
       }
   });
